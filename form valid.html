@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <form action="" id="form">
+        <input type="text" name="name" id="" placeholder="username">
+        <input type="email" name="email" id="" placeholder="email">
+        <input type="password" name="password" id="" placeholder="password">
+        <button type="submit" >submit</button>
+    </form>
+    <p class="msg">hello</p>
+    <script>
+       document.getElementById("form").addEventListener("submit",(e)=>{
+        e.preventDefault()
+        let username = document.getElementsByName("name")[0].value;
+         console.log(username)
+
+         let user_email = document.getElementsByName("email")[0].value;
+         console.log(user_email)
+        
+         let password = document.getElementsByName("password")[0].value;
+         console.log(password)
+ 
+         let hello = document.getElementsByClassName("msg")[0]
+        //  console.log(hello)
+
+
+         localStorage.setItem("username","jayakrishna")
+         let user_name = localStorage.getItem("username")
+         console.log(user_name)
+
+         localStorage.setItem("email","jay@gmail.com")
+         emails = localStorage.getItem("email")
+         console.log(emails)
+
+         localStorage.setItem("password","9392446556")
+         pass_word = localStorage.getItem("password")
+         console.log(pass_word)
+
+         if(username === user_name && user_email === emails && password === pass_word){
+            console.log("login successful")
+            username=""
+            user_email=""
+            password=""
+            hello.textContent="sucess"
+            window.open("http://www.instagram.com","_blank")
+        } else if (user_email !== emails && password === pass_word && username===user_name) {
+          userame="";
+          user_email = "";
+          password = "";
+          hello.textContent = "Invalid Email....!!";
+          console.log("Invalid email");
+        } else if (user_email === emails && password !== pass_word && username===user_name) {
+          username="";
+          user_email = "";
+          password = "";
+          hello.textContent = "Invalid password....!!";
+          console.log("Invalid password");
+        } else {
+          username="";
+          user_email = "";
+          password = "";
+          hello.textContent = "Invalid username....!!";
+          console.log("Invalid Data");
+        }
+        e.preventDefault();
+      });
+    </script>
+</body>
+</html>
